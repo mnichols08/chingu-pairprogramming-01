@@ -1,0 +1,67 @@
+body{
+    margin: 2em;
+}
+h1 {
+    text-align: center;
+}
+h3, p {
+    padding-right: 1em;
+}
+#inputNumber{
+    justify-content: center;
+}
+ input[type="number"] {
+    width: 20%;
+    align-self: center;
+ }
+  .inline-block > div {
+    display: inline-block;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-two-col {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex-two-col > div {
+    width: 50%;
+  }
+
+  
+  .flex-three-col {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex-three-col > div {
+    width: 33%;
+  }
+  
+  .flex-four-col {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex-four-col > div {
+    width: 25%;
+  }
+  
+  .flex-five-col {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex-five-col > div {
+    width: 20%;
+  }
+  
+  .flex-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  
