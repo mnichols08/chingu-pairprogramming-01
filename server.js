@@ -1,5 +1,6 @@
 const express = require('express');
-var cors = require('cors')
+var cors = require('cors');
+const path = require("path");
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 const app = express();
 const port = 3000;
