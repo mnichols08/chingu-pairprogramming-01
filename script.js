@@ -1,37 +1,66 @@
 const button = document.querySelector("button");
 
-button.addEventListener("click", generateLorem);
 
-function generateLorem(e) {
-    e.preventDefault();
-    const inputNumber = document.querySelector("#inputNumber input").value;
-    const outputType = document.querySelector('input[name="radios"]:checked').value;
-    const checkbox = document.querySelector(`input[type="checkbox"]`).checked;
-    console.log([ inputNumber, outputType, checkbox ])
-    return [ inputNumber, outputType, checkbox ]
+button.addEventListener('click', generateLorem)
+
+async function fetchIpsum() {
+        const length = document.querySelector("#inputNumber input").value;
+         const type = document.querySelector('input[name="radios"]:checked').value;
+         const static = document.querySelector(`input[type="checkbox"]`).checked;
+       return await fetch(`http://127.0.0.1:3000/${type}/${length}/${static}`).then(data => data.json()).then(obj => obj)
 }
 
+async function generateLorem(e) {
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'f082323548mshee1e723d815ebc2p1baa4ajsn00e9e87749e0',
-		'X-RapidAPI-Host': 'montanaflynn-lorem-text-generator.p.rapidapi.com'
-	}
-};
+    e.preventDefault();
+    const inputNumber = document.querySelector("#inputNumber input").value;
+    const type = document.querySelector('input[name="radios"]:checked').value;
+    const checkbox = document.querySelector(`input[type="checkbox"]`).checked;
 
-const generateParagraph = (count, length, options) => fetch(`https://montanaflynn-lorem-text-generator.p.rapidapi.com/paragraph?count=${count}&length=${length}`, options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+    //const fetchIpsum = async () => await fetch(`http://127.0.0.1:3000/${length}/${static}`).then(data => data.json()).then(obj => obj);
+    const data = await fetchIpsum().then(data => data)
+        updateUi(data)
     
-    
-const generateWord = (count, options) => fetch(`https://montanaflynn-lorem-text-generator.p.rapidapi.com/word?count=${count}`, options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+}
 
-const generateSentence = (length, count, options) => fetch(`https://montanaflynn-lorem-text-generator.p.rapidapi.com/sentence?length=${length}&count=${count}`, options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+const updateUi = (data) => {
+        const { bytes, type, string } = data;
+        let obj = {};
+        const interfaceFrame = document.querySelector('#interface-frame');
+        
+        console.log(type)
+        interfaceFrame.innerText = '';
+        if (type == 'paragraphs') {
+                
+                string.split('\n').map(item => {
+                        const p = document.createElement('p');
+                        p.innerText = item
+                        interfaceFrame.append(p)
+                });
+                
+                
+        }
+        if (type == 'words') {
+                const p = document.createElement('p');
+                p.innerText = string
+                interfaceFrame.append(p)                
+        } 
+        if (type == 'bytes') {
+                console.log(bytes)
+                const p = document.createElement('p');
+                p.innerText = string.slice(0, document.querySelector('#inputNumber input').value);
+                interfaceFrame.append(p)                
+        }
+        if (type == 'lists') {
+                const list = document.createElement('ul');
+                 
+                string.split('. ').map(item => {
+                        const li = document.createElement('li');
+                        li.innerText = item
+                        list.append(li)
+                        interfaceFrame.append(list)  
+                });
+        }   
+             
+      
+}
