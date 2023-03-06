@@ -4,11 +4,12 @@
   "description": "A clone of the lorum ipsum generator at lipsum.com.",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node sever",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
     "server": "nodemon server",
     "client": "live-server",
-    "dev": "concurrently \"npm run server\" \"npm run client\" --kill-others-on-fail" 
+    "dev": "concurrently \"npm run server\" \"npm run client\" --kill-others-on-fail"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,9 @@
     "axios": "^1.3.4",
     "express": "^4.18.2",
     "lorem-ipsum": "^2.0.8"
+    
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
   }
 }
