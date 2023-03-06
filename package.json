@@ -2,10 +2,10 @@
   "name": "session-01",
   "version": "1.0.0",
   "description": "A clone of the lorum ipsum generator at lipsum.com.",
-  "main": "index.html",
+  "main": "app.js",
   "scripts": {
-    "build": "node sever",
-    "dev": "nodemon server"
+    "build": "node app",
+    "dev": "nodemon app"
   },
   "repository": {
     "type": "git",

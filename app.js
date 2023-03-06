@@ -32,5 +32,5 @@ app.get('/:type/:length/:static', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App running on port:${port}`)
 })
