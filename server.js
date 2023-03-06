@@ -18,7 +18,8 @@ const lorem = new LoremIpsum({
   });
 
 app.use(cors())
-
+app.use(express.static('./public'))
+app.get('/', (req, res) => res.send(200))
 app.get('/:type/:length/:static', (req, res) => {
     const length = Number(req.params.length);
     const type = req.params.type;

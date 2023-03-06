@@ -5,11 +5,7 @@
   "main": "index.html",
   "scripts": {
     "build": "node sever",
-    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
-    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
-    "server": "nodemon server",
-    "client": "live-server",
-    "dev": "concurrently \"npm run server\" \"npm run client\" --kill-others-on-fail"
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -26,8 +22,5 @@
     "express": "^4.18.2",
     "lorem-ipsum": "^2.0.8"
     
-  },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.5"
   }
 }
