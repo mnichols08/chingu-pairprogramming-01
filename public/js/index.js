@@ -7,17 +7,12 @@ async function fetchIpsum() {
         const length = document.querySelector("#inputNumber input").value;
          const type = document.querySelector('input[name="radios"]:checked').value;
          const static = document.querySelector(`input[type="checkbox"]`).checked;
-       return await fetch(`http://127.0.0.1:3000/${type}/${length}/${static}`).then(data => data.json()).then(obj => obj)
+       return await fetch(`/${type}/${length}/${static}`).then(data => data.json()).then(obj => obj)
 }
 
 async function generateLorem(e) {
 
     e.preventDefault();
-    const inputNumber = document.querySelector("#inputNumber input").value;
-    const type = document.querySelector('input[name="radios"]:checked').value;
-    const checkbox = document.querySelector(`input[type="checkbox"]`).checked;
-
-    //const fetchIpsum = async () => await fetch(`http://127.0.0.1:3000/${length}/${static}`).then(data => data.json()).then(obj => obj);
     const data = await fetchIpsum().then(data => data)
         updateUi(data)
     
@@ -27,8 +22,6 @@ const updateUi = (data) => {
         const { bytes, type, string } = data;
         let obj = {};
         const interfaceFrame = document.querySelector('#interface-frame');
-        
-        console.log(type)
         interfaceFrame.innerText = '';
         if (type == 'paragraphs') {
                 

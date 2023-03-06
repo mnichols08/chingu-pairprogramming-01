@@ -3,7 +3,7 @@ var cors = require('cors');
 const path = require("path");
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 const app = express();
-const port = 3000;
+const port = 8080;
 
 const staticLorem = 'Lorem ipsum dolor sit amet';
 const lorem = new LoremIpsum({
@@ -23,7 +23,7 @@ app.get('/', (req, res) => res.send(200))
 app.get('/:type/:length/:static', (req, res) => {
     const length = Number(req.params.length);
     const type = req.params.type;
-    const string = `${req.params.static === 'true' ? staticLorem : ''} ${type === 'paragraphs' ? lorem.generateParagraphs(length) : type === 'words' ? lorem.generateWords(length) : type === 'lists' ? lorem.generateSentences() : type === 'bytes' ? lorem.generateSentences(1) : lorum.generateWords(length)}`
+    const string = `${req.params.static === 'true' ? staticLorem : ''} ${type === 'paragraphs' ? lorem.generateParagraphs(length) : type === 'words' ? lorem.generateWords(length) : type === 'lists' ? lorem.generateSentences(length) : type === 'bytes' ? lorem.generateSentences(1) : lorum.generateWords(length)}`
   res.status(200).json({
     type: req.params.type,
     string,
