@@ -11,8 +11,10 @@ h3, p {
     justify-content: center;
 }
  input[type="number"] {
-    width: 20%;
-    align-self: center;
+  width: 3em;
+  height: 1.5em;  
+  align-self: center;
+    margin: auto;
  }
   .inline-block > div {
     display: inline-block;
