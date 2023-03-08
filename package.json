@@ -4,7 +4,7 @@
   "description": "A clone of the lorum ipsum generator at lipsum.com.",
   "main": "index.html",
   "scripts": {
-    "build": "node sever",
+    "build": "node server",
     "server": "nodemon server",
     "client": "live-server",
     "dev": "concurrently \"npm run server\" \"npm run client\" --kill-others-on-fail"
